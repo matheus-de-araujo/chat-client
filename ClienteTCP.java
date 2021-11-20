@@ -1,14 +1,14 @@
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class ClienteTCP {
+	ObjectOutputStream saida;
+	ObjectInputStream entrada;
+	Socket conexao;
 	
 	public Message enviarDados(Message message) {
-		ObjectOutputStream saida;
-        ObjectInputStream entrada;
-        
-        Socket conexao;
         
         try {
 			conexao = new Socket("localhost", 9000);
@@ -22,10 +22,6 @@ public class ClienteTCP {
 			// recebendo a resposta do servidor
 			message = (Message) entrada.readObject();
 			
-			entrada.close();
-			saida.close();
-			conexao.close();
-			
 			return message;
 			
 		} catch (Exception e) {
@@ -33,4 +29,11 @@ public class ClienteTCP {
 		}
 	}
 
+	public void encerrarConexao() throws IOException{	
+		if(conexao != null){
+			entrada.close();		
+			saida.close();
+			conexao.close();
+		}
+	}
 }
