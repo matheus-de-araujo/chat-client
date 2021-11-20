@@ -28,7 +28,7 @@
 ```bash
 
 # Clone este repositório
-$ git clone https://github.com/matheus-de-araujo/sismed
+$ git clone https://github.com/matheus-de-araujo/chat-client
 
 ```
 
