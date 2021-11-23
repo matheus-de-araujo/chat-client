@@ -7,14 +7,11 @@ public class ClienteTCP {
 	ObjectOutputStream saida;
 	ObjectInputStream entrada;
 	Socket conexao;
-	Boolean isFirstTime = true;
 	
 	public Message enviarDados(Message message) {
         
         try {
 			conexao = new Socket("localhost", 9000);
-			if(isFirstTime) System.out.println("conectado ao servidor na porta 9000" );
-			isFirstTime = false;
 			saida = new ObjectOutputStream(conexao.getOutputStream());
 			entrada = new ObjectInputStream(conexao.getInputStream());
 			
